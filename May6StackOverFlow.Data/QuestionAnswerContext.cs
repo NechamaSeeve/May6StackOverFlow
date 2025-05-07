@@ -17,7 +17,7 @@ namespace May6StackOverFlow.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Tag> Tags { get; set; }
-        public DbSet<QuestionsTags> QuestionTags { get; set; }
+        public DbSet<QuestionTags> QuestionTags { get; set; }
         public DbSet<Answer> Answers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -33,10 +33,12 @@ namespace May6StackOverFlow.Data
             }
 
             //set up composite primary key
-            modelBuilder.Entity<QuestionsTags>()
+            modelBuilder.Entity<QuestionTags>()
                 .HasKey(qt => new { qt.QuestionId, qt.TagId });
 
         }
+
+
     }
     
 }

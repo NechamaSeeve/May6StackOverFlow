@@ -1,4 +1,6 @@
 using April6StackOverFlow.Web.Models;
+using May6StackOverFlow.Data;
+
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -14,7 +16,10 @@ namespace April6StackOverFlow.Web.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var repo = new QuestionsAnswerRepository(_connectionString);
+           
+            List<Question> questions = repo.GetAllQuestions();
+            return View(questions);
         }
 
        

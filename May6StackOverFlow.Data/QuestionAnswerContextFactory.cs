@@ -14,10 +14,9 @@ namespace May6StackOverFlow.Data
         {
             var config = new ConfigurationBuilder()
               .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(),
-              $"..{Path.DirectorySeparatorChar}May6StackOverFlow.Web"))
+              $"..{Path.DirectorySeparatorChar}April6StackOverFlow.Web"))
               .AddJsonFile("appsettings.json")
               .AddJsonFile("appsettings.local.json", optional: true, reloadOnChange: true).Build();
-
             return new QuestionAnswerContext(config.GetConnectionString("ConStr"));
         }
 

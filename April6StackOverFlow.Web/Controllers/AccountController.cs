@@ -21,8 +21,9 @@ namespace May6StackOverFlow.Web.Controllers
         [HttpPost]
         public IActionResult Signup(User user, string password)
         {
-            
-           
+            var db = new UserRepository(_connectionString);
+            db.AddUser(user, password);
+
             return Redirect("/account/login");
         }
 
@@ -38,15 +39,15 @@ namespace May6StackOverFlow.Web.Controllers
         [HttpPost]
         public IActionResult Login(string email, string password)
         {
-            
-            //var user = db.Login(email, password);
-            //if (user == null)
-            //{
-            //    TempData["Error"] = "Invalid login!";
-            //    return Redirect("/account/login");
-            //}
+            var repo = new UserRepository(_connectionString);
+            var user = repo.Login(email, password);
+            if (user == null)
+            {
+                TempData["Error"] = "Invalid login!";
+                return Redirect("/account/login");
+            }
 
-            ////this code logs in the current user!
+            //this code logs in the current user!
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Email, email)
@@ -55,7 +56,7 @@ namespace May6StackOverFlow.Web.Controllers
             HttpContext.SignInAsync(new ClaimsPrincipal(
                 new ClaimsIdentity(claims, "Cookies", ClaimTypes.Email, "role"))).Wait();
 
-            return Redirect("/home/newad");
+            return Redirect("/home");
         }
 
         public IActionResult Logout()

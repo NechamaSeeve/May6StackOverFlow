@@ -5,6 +5,6 @@
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public List<QuestionsTags> QuestionsTags { get; set; }
+        public List<QuestionTags> QuestionTags { get; set; }
     }
 }

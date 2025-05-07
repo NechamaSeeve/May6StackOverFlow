@@ -10,7 +10,7 @@
         public User User { get; set; }
 
 
-        public List<QuestionsTags> QuestionsTags { get; set; }
+        public List<QuestionTags> QuestionTags { get; set; }
         public List<Answer> Answers { get; set; }
         
     }

@@ -1,8 +1,37 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@using May6StackOverFlow.Data
+@model List<Question> 
+@foreach(var q in Model)
+{
+    <div b-k8y6yzo0ym class="container">
+        <main b-k8y6yzo0ym role="main" class="pb-3">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+            <div class="row">
+                <div class="col-md-8 offset-md-2" style="margin-top:100px">
+                    <div class="card card-body bg-light">
+                        <h4>
+                            <a href="/question/viewquestion?id=@q.Id">
+                                @q.Title
+                            </a>
+                        </h4>
+                        <div>
+                            <span>Tags:</span>
+                            @foreach (var tag in q.QuestionTags)
+                            {
+                                <span class="badge bg-primary">@tag.Tag.Name</span>
+                                
+                            }
+
+                        </div>
+                        <div style="margin-top: 10px;">
+                            @q.Text
+                        </div>
+                        <span>Likes: 0</span>
+                        <br />
+                        <span>@q.Answers.Count() answer(s)</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+}

@@ -1,6 +1,6 @@
 ﻿namespace May6StackOverFlow.Data
 {
-    public class QuestionsTags
+    public class QuestionTags
     {
         public int QuestionId { get; set; }
         public int TagId { get; set; }
